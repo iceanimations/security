@@ -3,7 +3,7 @@ from auth import user as USER
 reload(util)
 
 
-def checkinability(search_key, context = None):
+def checkinability(search_key, process = None, context = None):
 
     '''
     @search_key: the search_key of the sobject whose checkinability
