@@ -12,14 +12,14 @@ def checkinability(search_key, process = None, context = None):
     not considered yet
     @return: True if the user can checkin the file
     '''
-    
+
     server = USER.get_server()
     user = USER.get_user()
 
     if user == 'admin':
         return True
 
-    
+
     logins = server.query('sthpw/login_in_group', filters = [('login', user)])
     util.pretty_print(logins)
     if logins:
@@ -39,5 +39,8 @@ def checkinability(search_key, process = None, context = None):
                ('/shot' in search_key and
                 any([dpt in login['login_group'] for dpt in ['animation']]))):
                return True
-           
+
+           if 'admin' == login['login_group']:
+               return True
+
     return False
