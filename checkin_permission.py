@@ -3,7 +3,7 @@ from auth import user as USER
 reload(util)
 
 
-def checkinability(search_key, process = None, context = None):
+def checkinability(search_key, process = None, context = None, user = None):
 
     '''
     @search_key: the search_key of the sobject whose checkinability
@@ -14,7 +14,8 @@ def checkinability(search_key, process = None, context = None):
     '''
 
     server = USER.get_server()
-    user = USER.get_user()
+    if not user:
+        user = USER.get_user()
 
     if user == 'admin':
         return True
