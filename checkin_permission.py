@@ -42,10 +42,12 @@ def checkinability(search_key, process = None, context = None, user = None):
                 # modeling and rigging dept can checkin to asset
                 ('/asset' in search_key and
                  any([dpt in login['login_group'] for dpt in ['model',
-                                                              'rig']])) or
+                                                              'rig', 
+                                                              'light']])) or
                 # animation dept can checkin to shot
                 ('/shot' in search_key and
-                 any([dpt in login['login_group'] for dpt in ['animation']]))):
+                 any([dpt in login['login_group'] for dpt in ['animation',
+                                                                'light']]))):
 
                 return True
 
