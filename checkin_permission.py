@@ -22,18 +22,15 @@ def checkinability(search_key, process = None, context = None, user = None):
 
 
     logins = server.query('sthpw/login_in_group', filters = [('login', user)])
-    util.pretty_print(logins)
 
     if logins:
         for login in logins[:]:
-            print "\n"*10
             groups =  server.query('sthpw/login_group',
                                    filters = [('login_group',
                                                login['login_group'])])
             if not groups:
                 continue
 
-            util.pretty_print(groups)
             project = groups[0]['project_code']
             sk_project = util.get_project_from_search_key(search_key)
             if ((project == sk_project
